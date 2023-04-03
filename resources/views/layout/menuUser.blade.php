@@ -23,13 +23,13 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading text-center text-success">Tipo de Usuario</div>
-                            <a class="nav-link" href="index.html">
-                                <div class="sb-nav-link-icon"><i class="fa-solid fa-cloud-arrow-up" style="color: #32bd4e;"></i></div>
-                                IoT
-                            </a>
-                            <a class="nav-link" href="index.html">
+                            <a class="nav-link" href="{{route('usuario')}}">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-user" style="color: #32bd4e;"></i></div>
                                 Usuario
+                            </a>
+                            <a class="nav-link" href="{{route('iot')}}">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-cloud-arrow-up" style="color: #32bd4e;"></i></div>
+                                IoT
                             </a>
                             <div class="sb-sidenav-menu-heading text-center text-success">Interfaces</div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">

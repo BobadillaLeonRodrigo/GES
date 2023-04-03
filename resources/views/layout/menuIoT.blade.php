@@ -6,7 +6,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Dashboard - Admin</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
@@ -24,10 +23,6 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading text-center text-success">Tipo de Usuario</div>
-                            <a class="nav-link" href="{{route('admin')}}">
-                                <div class="sb-nav-link-icon"><i class="fa-solid fa-address-card" style="color: #32bd4e;"></i></div>
-                                Administrator
-                            </a>
                             <a class="nav-link" href="{{route('iot')}}">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-cloud-arrow-up" style="color: #32bd4e;"></i></div>
                                 IoT
@@ -44,7 +39,7 @@
                             </a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="#">Reportes Graficas</a>
+                                    <a class="nav-link" href="layout-static.html">Reportes</a>
                                 </nav>
                             </div>
                         </div>
@@ -55,5 +50,5 @@
                     </div>
                 </nav>
         </div>
-@yield('menuAdmin')
+@yield('menuIoT')
 <!--Fin del Navbar lateral menu-->
