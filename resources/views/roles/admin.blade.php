@@ -32,7 +32,7 @@
                                                 <td>{{$c -> roles}}</td>
                                                 <td>
                                                     <a type="button" class="btn btn-success" href="{{route('Modificarusuario',['id_usuarios'=>$c->id_usuarios])}}">Editar</a>
-                                                    <a type="button" class="btn btn-secondary" href="{{ route('usuarios.show',$c->id_usuarios) }}">Vista</a>
+                                                    <a type="button" class="btn btn-secondary" href="{{ route('detalle',['id_usuarios'=>$c->id_usuarios])}}">Vista</a>
                                                         @if($c->deleted_at)
                                                     <a href="{{route('activarusuario',['id_usuarios'=>$c->id_usuarios])}}">
                                                         <button type="button" class="btn btn-warning">Reactivar</button>

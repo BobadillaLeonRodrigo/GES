@@ -8,13 +8,7 @@ use App\Models\Tiposroles;
 use Illuminate\Support\Facades\Hash;
 use Session;
 
-class UsuariosController extends Controller
-{
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+class UsuariosController extends Controller {
     public function index() {
         //Consula para desplegar los datos en el panelusuarios
         $consula = usuarios::join('tiposroles','usuarios.id_roles','=','tiposroles.id_roles')->
@@ -35,7 +29,7 @@ class UsuariosController extends Controller
                     $idsiguiente = $consula[0]->id_usuarios + 1;
                 }
                         /* $TiposRoles = TiposRoles::orderBy('nombre_r')->get(); */
-//Asigna en que tipo de rol y Id del usuario se encuentra
+    //Asigna en que tipo de rol y Id del usuario se encuentra
                     $TiposRoles = TiposRoles::all();
                         return view('usuarios.create')->with('idsiguiente',$idsiguiente)->with('TiposRoles',$TiposRoles);
     }
@@ -73,6 +67,10 @@ class UsuariosController extends Controller
         $usuarios = usuarios::Select('usuarios.id_usuarios','usuarios.nombre_u','usuarios.app_u','usuarios.apm_u',
             'usuarios.email')->first();
                 return view('usuarios.show')->with('usuarios',$usuarios);
+    }
+    public function detalle($id_usuarios) {
+        $usuarios = usuarios::find($id_usuarios);
+        return view("usuarios.show")->with(['detalle' => $usuarios]);
     }
 
     //Modifica el usuario para la vista de edit con el boton Editar cambiar edit por Modificarusuario
