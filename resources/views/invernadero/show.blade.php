@@ -1,6 +1,6 @@
 <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary"></h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Vista del Usuario: {{$usuarios->nombre_u}}</h6>
                 </div>
                 <div class="card-body">
                  <h5 class="card-title">ID_Usuario: {{ $usuarios->id_usuarios }}</h5>

@@ -1,3 +1,4 @@
+@include('layout.scripts')
 @include('layout.header')
 <!-- Begin Page Content -->
 <div class="container-fluid">
@@ -48,13 +49,13 @@
                         <small class="form-text text-danger">{{$message}}</small>
                         @enderror
                     <label class="form-label">Selección de Roles</label>
-                        <select type="name" class="form-select" aria-label="Default select example"  name="id_roles">
+                        <select type="name" class="form-select rounded-5 border-dark text-white bg-success" aria-label="Default select example"  name="id_roles">
                             <option selected value="{{$usuarios->id_roles}}" > Tipos de Roles </option>
                         @foreach($tiposroles as $roles)
                             <option value="{{$roles->id_roles}}">{{$roles->nombre_r}}</option>
                         @endforeach
                         </select>
-                        <a class="btn btn-danger text-center border border-dark"  href="{{route('admin')}}" >Cancelar</a>
+                        <a class="btn btn-danger text-center border border-dark" href="{{route('admin')}}">Cancelar</a>
                         <button type="submit" class="btn btn-success m-3" value="update">Aceptar</button>
                     </div>
                 </form>
@@ -64,3 +65,4 @@
 </div>
 </div>
 </div>
+@include('layout.footer')

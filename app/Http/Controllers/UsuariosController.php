@@ -26,11 +26,6 @@ class UsuariosController extends Controller
         return view('login.login');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create() {
         $consula = usuarios::orderBy('id_usuarios','DESC')->take(1)->get();
             $cuantos = count($consula);
@@ -45,12 +40,11 @@ class UsuariosController extends Controller
                         return view('usuarios.create')->with('idsiguiente',$idsiguiente)->with('TiposRoles',$TiposRoles);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
+//  INICIO DE LA CREACION DE CRUDS DE USUARIO
+
+
+    //Crea los usuarios
     public function store(Request $request) {
         $this->validate($request,[
             //Agrega las alertas si los campos no se han añadido
@@ -70,38 +64,31 @@ class UsuariosController extends Controller
             $usuarios -> passw = Hash::make($request->passw);
             $usuarios -> id_roles = $request->id_roles;
                 $usuarios -> save();
-                    return redirect()->route('usuarios.index');
+                    return redirect()->route('admin');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Usuarios  $usuarios
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Usuarios $usuarios) {
-        //
+    //Muestra la informacion por medio de un cady para la visualizacion del usuario (boton vista)
+
+    public function show($id_usuarios) {
+        $usuarios = usuarios::Select('usuarios.id_usuarios','usuarios.nombre_u','usuarios.app_u','usuarios.apm_u',
+            'usuarios.email')->first();
+                return view('usuarios.show')->with('usuarios',$usuarios);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Usuarios  $usuarios
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id_usuarios) {
-        $tiposroles = TiposRoles::All();
-            $usuarios = Usuarios::All()->WHERE('id_usuarios',$id_usuarios);
+    //Modifica el usuario para la vista de edit con el boton Editar cambiar edit por Modificarusuario
+
+    public function Modificarusuario($id_usuarios) {
+        $tiposroles = TiposRoles::all();
+        $usuarios=Usuarios::withTrashed()->join('TiposRoles','Usuarios.id_roles','=','TiposRoles.id_roles')
+        ->select('usuarios.id_usuarios','usuarios.nombre_u','usuarios.app_u','usuarios.apm_u','usuarios.email'
+        ,'usuarios.passw'
+        ,'TiposRoles.nombre_r as roles','usuarios.id_roles')->where('id_usuarios',$id_usuarios)
+        ->orderBy('usuarios.nombre_u')->get();
                 return view('usuarios.edit')->with('usuarios',$usuarios[0])->with('tiposroles',$tiposroles);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Usuarios  $usuarios
-     * @return \Illuminate\Http\Response
-     */
+    //modifica para el redirecion al admin, cambiar update por modificar
+
     public function modificar(Request $request) {
         $this->validate($request,[
             //Agrega las alertas si los campos no se han añadido
@@ -113,6 +100,7 @@ class UsuariosController extends Controller
             'id_roles'=>''
         ]);
         $usuarios = usuarios::all()->find($request->id_usuarios);
+        $usuarios -> id_usuarios = $request->id_usuarios;
         $usuarios -> nombre_u = $request->nombre_u;
         $usuarios -> app_u = $request->app_u;
         $usuarios -> apm_u = $request->apm_u;
@@ -120,24 +108,41 @@ class UsuariosController extends Controller
         $usuarios -> passw = Hash::make($request->passw);
         $usuarios -> id_roles = $request->id_roles;
             $usuarios -> save();
-                return redirect()->route('usuarios.index');
+                return redirect()->route('admin');
+    }
+    public function activarusuario($id_usuarios){
+        usuarios::withTrashed()->where('id_usuarios',$id_usuarios)->restore();
+            /*return view('formulario.alerta')->with('proceso',"Activar Empleados")
+                ->with('mensaje',"El empleado ha sido activado correctamente")
+                    ->with('error',1);*/
+            Session::flash('mensaje',"El empleado ha sido activado correctamente");
+                return redirect()->route('admin');
+    }
+    public function desactivausuario($id_usuarios){
+        $usuarios=usuarios::find($id_usuarios);
+            $usuarios->delete();
+        /* return view('formulario.alerta')->with('proceso',"Desactivar Empleados")
+        ->with('mensaje',"El empleado ha sido desactivado correctamente")
+        ->with('error',1);*/
+            Session::flash('mensaje',"El empleado ha sido desactivado correctamente");
+                return redirect()->route('admin');
+    }
+    public function borrarusuario($id_usuarios){
+        $usuarios=usuarios::withTrashed()->find($id_usuarios)->forceDelete();
+            return redirect()->route('admin');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Usuarios  $usuarios
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Usuarios $usuarios)
-    {
-        //
-    }
+
+
+//  FIN DEL CODIGO DE USO DE CRUD DE USUARIOS
+
 
     //usuarios sin privilegios de admin y Iot unicamente se registran usuarios
     public function registro_u(){
         return view('login.registro_u');
     }
+
+    //logica para poder registrar un usuario normal
 
     public function registro_usuarios(Request $request) {
         $this->validate($request,[
@@ -204,8 +209,8 @@ class UsuariosController extends Controller
     }
 
     public function admin(){
-        $consula = usuarios::join('tiposroles','usuarios.id_roles','=','tiposroles.id_roles')->
-            SELECT('usuarios.id_usuarios','usuarios.nombre_u','usuarios.app_u','usuarios.apm_u','usuarios.email','usuarios.passw',
+        $consula = usuarios::withTrashed()->join('tiposroles','usuarios.id_roles','=','tiposroles.id_roles')->
+            SELECT('usuarios.id_usuarios','usuarios.nombre_u','usuarios.app_u','usuarios.apm_u','usuarios.email','usuarios.passw','usuarios.deleted_at',
                 'tiposroles.nombre_r as roles')->get();
         return view('roles.admin')->with('consulta',$consula);
     }

@@ -14,26 +14,6 @@
         <li class="nav-item">
           <a class="nav-link active link-success" href="{{route('registro_u')}}">Registrarme</a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle link-success" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Practicas
-          </a>
-          <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item link-success" href="#">Practicas00</a></li>
-              <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item link-success" href="#">Practica01</a></li>
-              <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item link-success" href="#">Practica02</a></li>
-              <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item link-success" href="#">Practica03</a></li>
-              <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item link-success" href="#">Practica04</a></li>
-              <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item link-success" href="#">Another action</a></li>
-              <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item link-success" href="#">Something else here</a></li>
-          </ul>
-        </li>
       </ul>
     </div>
   </div>

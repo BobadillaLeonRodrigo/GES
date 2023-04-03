@@ -25,9 +25,12 @@
                 <td>{{$c -> roles}}</td>
                 <td>
                     <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                        <a type="button" class="btn btn-success" href="{{ route('usuarios.edit',$c->id_usuarios) }}">Editar</a>
-                        <a type="button" class="btn btn-secondary" href="{{ route('usuarios.show',$c->id_usuarios) }}">Vista</a>
-                        <button type="button" class="btn btn-danger" href="">Eliminar</button>
+                    <a type="button" class="btn btn-success" href="{{route('Modificarusuario',['id_usuarios'=>$c->id_usuarios])}}">Editar</a>                        <a type="button" class="btn btn-secondary" href="{{ route('usuarios.show',$c->id_usuarios) }}">Vista</a>
+                        <form action="usuarios/{{$c->id_usuarios}}" method="POST">
+                                {!! csrf_field() !!}
+                                @method("delete")
+                                <button class="btn btn-danger m-3" type="submit">Eliminar</button>
+                                </form>
                     </div>
                 </td>
             </tr>
