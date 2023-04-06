@@ -15,13 +15,14 @@ return new class extends Migration
     {
         Schema::create('mediciones', function (Blueprint $table) {
             $table->increments('id_mediciones');
-            $table->String('humedad_m');
-            $table->Integer('temperatura_m');
+            $table->float('humedad_m');
+            $table->float('temperatura_m');
             $table->String('medicion');
             $table->Date('fecha_m');
-            $table->Datetime('hora_m');
+            $table->time('hora_m');
             $table->Integer('id_sensor')->unsigned();
             $table->foreign('id_sensor')->references('id_sensor')->on('sensores');
+            $table->timestamps();
             $table->Softdeletes();
         });
     }

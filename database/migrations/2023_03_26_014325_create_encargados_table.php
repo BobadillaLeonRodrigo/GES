@@ -18,11 +18,12 @@ return new class extends Migration
             $table->String('nombre_en');
             $table->String('app_en');
             $table->String('apm_en');
-            $table->Datetime('entrada');
-            $table->Datetime('salida');
+            $table->time('entrada');
+            $table->time('salida');
             $table->Date('dias');
             $table->Integer('id_usuarios')->unsigned();
             $table->foreign("id_usuarios")->references("id_usuarios")->on("usuarios");
+            $table->timestamps();
             $table->Softdeletes();
         });
     }
