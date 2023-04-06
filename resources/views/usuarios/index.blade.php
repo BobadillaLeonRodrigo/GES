@@ -1,5 +1,5 @@
 @include('layout.scripts')
-@include('layout.header_admin')
+@include('layout.header')
 <div class="table-responsive">
 <a class="btn btn-dark col-md-6 my-2 offset-md-3 rounded-5 border-dark border-3 text-white bg-success" href="{{ route('usuarios.create') }}"> Crear Usuarios de Diversos Roles </a>
     <table class="table border-dark">
