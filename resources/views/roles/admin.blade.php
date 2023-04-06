@@ -9,7 +9,7 @@
                                 <a class="btn btn-info border border-dark border-3" href="{{ route('usuarios.create') }}">Crear Usuarios</a>
                         </div>
                             <div class="card-body">
-                                <table id="datatablesSimple" class="table table-hover">
+                                <table id="datatablesSimple" class="table table-hover border border-2 border-dark rounded-2">
                                     <thead class="text-center table-dark text-success">
                                         <tr>
                                             <th>ID_Usuario</th>
