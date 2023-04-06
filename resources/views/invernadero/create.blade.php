@@ -1,4 +1,5 @@
-@include('layout.header')
+@include('layout.headerpanel')
+@include('layout.scripts')
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -7,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Registro de Usuarios</title>
+        <title>Registro de Invernaderos</title>
         <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     </head>
@@ -17,11 +18,11 @@
                 <main>
                     <div class="container-fluid">
                         <div class="row justify-content-center">
-                            <div class="col-lg-7">
-                                <div class="card shadow-lg border-4 border-dark rounded-3 rounded-lg mt-3">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Registro de Usuarios</h3></div>
+                            <div class="col-lg-12">
+                                <div class="card shadow-lg border-4 border-dark rounded-3 rounded-lg mt-5">
+                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Registro de Invernaderos</h3></div>
                                     <div class="card-body">
-                                        <form class="row g-1" method="POST" action="{{route('usuarios.store')}}">
+                                        <form class="row g-1" method="POST" action="{{route('invernadero.store')}}">
                                         {{csrf_field()}}
                                             <div class="row mb-4">
                                                 <div class="col-md-3">
@@ -30,9 +31,9 @@
                                                         type="name"
                                                         class="form-control"
                                                         value="{{$idsiguiente}}"
-                                                        placeholder="Ingrese Su Nombre"
-                                                        id="id_usuarios"
-                                                        name="id_usuarios"
+                                                        placeholder="ID"
+                                                        id="id_invernadero"
+                                                        name="id_invernadero"
                                                         readOnly="readOnly">
                                                         <label for="inputFirstName">Id</label>
                                                     </div>
@@ -41,13 +42,13 @@
                                                     <div class="form-floating mb-3 mb-md-0">
                                                         <input
                                                             class="form-control"
-                                                            id="nombre_u"
-                                                            name="nombre_u"
+                                                            id="nombre_i"
+                                                            name="nombre_i"
                                                             type="name"
-                                                            placeholder="Enter your first name"
+                                                            placeholder="Nombre de Invernadero"
                                                         />
-                                                        @if($errors ->first('nombre_u'))
-                                                            <p class='text-danger'>{{$errors->first('nombre_u')}} </p>
+                                                        @if($errors ->first('nombre_i'))
+                                                            <p class='text-danger'>{{$errors->first('nombre_i')}} </p>
                                                         @endif
                                                         <label for="inputFirstName">Nombre</label>
                                                     </div>
@@ -56,80 +57,50 @@
                                                     <div class="form-floating">
                                                         <input
                                                             class="form-control"
-                                                            id="app_u"
-                                                            name="app_u"
-                                                            type="name"
-                                                            placeholder="Enter your last name"
+                                                            id="lote"
+                                                            name="lote"
+                                                            type="number"
+                                                            placeholder="Numero de Lote"
                                                         />
-                                                        @if($errors ->first('nombre_u'))
-                                                            <p class='text-danger'>{{$errors->first('nombre_u')}} </p>
+                                                        @if($errors ->first('lote'))
+                                                            <p class='text-danger'>{{$errors->first('lote')}} </p>
                                                         @endif
-                                                        <label for="inputLastName">Apellido Paterno</label>
+                                                        <label for="inputLastName">Numero de Lote</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="form-floating">
                                                         <input
                                                             class="form-control"
-                                                            id="apm_u"
-                                                            name="apm_u"
-                                                            type="name"
-                                                            placeholder="Enter your last name"
+                                                            id="descripcion"
+                                                            name="descripcion"
+                                                            type="text"
+                                                            placeholder="Descripcion"
                                                         />
-                                                        @if($errors ->first('nombre_u'))
-                                                            <p class='text-danger'>{{$errors->first('nombre_u')}} </p>
+                                                        @if($errors ->first('descripcion'))
+                                                            <p class='text-danger'>{{$errors->first('descripcion')}} </p>
                                                         @endif
-                                                        <label for="inputLastName">Apellido Materno</label>
+                                                        <label for="inputLastName">Descripcion</label>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="form-floating mb-3">
-                                                <input
-                                                    class="form-control"
-                                                    id="email"
-                                                    name="email"
-                                                    type="email"
-                                                    placeholder="name@example.com"
-                                                />
-                                                @if($errors ->first('email'))
-                                                    <p class='text-danger'>{{$errors->first('email')}} </p>
-                                                @endif
-                                                <label for="inputEmail">Correo Electronico</label>
-                                            </div>
-
                                             <div class="form-floating mb-3">
                                             <select
                                                 type="name"
                                                 class="form-select"
                                                 aria-label="Default select example"
-                                                id="id_roles"
-                                                name="id_roles"
+                                                id="id_encargado"
+                                                name="id_encargado"
                                             >
-                                                <option selected> Seleccion de Roles </option>
-                                                    @foreach($TiposRoles as $roles)
-                                                        <option value="{{$roles->id_roles}}">{{$roles->nombre_r}}</option>
+                                                <option selected> Asignacion de Encargado </option>
+                                                    @foreach($encargados as $encargado)
+                                                        <option value="{{$encargado->id_encargado}}">{{$encargado->nombre_en}}</option>
                                                     @endforeach
                                             </select>
-                                                <label for="inputEmail">Tipo de Roles</label>
-                                            </div>
-
-                                            <div class="row mb-3">
-                                                    <div class="form-floating mb-3">
-                                                        <input
-                                                            class="form-control"
-                                                            id="passw"
-                                                            name="passw"
-                                                            type="password"
-                                                            placeholder="Create a password"
-                                                        />
-                                                        @if($errors ->first('nombre_u'))
-                                                            <p class='text-danger'>{{$errors->first('nombre_u')}} </p>
-                                                        @endif
-                                                        <label for="inputPassword">Contraseña</label>
-                                                    </div>
+                                                <label for="inputEmail">Tipo de Encargado</label>
                                             </div>
                                             <div class="mt-2">
-                                                    <button class="btn btn-success text-center border border-dark" type="submit"><em>Crear Usuarios</em></button>
+                                                    <button class="btn btn-success text-center border border-dark" type="submit"><em>Crear Encargado</em></button>
                                             </div>
                                         </form>
                                     </div>
