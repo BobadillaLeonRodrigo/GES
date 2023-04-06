@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Hash;
 use Session;
 
 class UsuariosController extends Controller {
+
+//Usar para el cada controlador
     public function index() {
         //Consula para desplegar los datos en el panelusuarios
         $consula = usuarios::join('tiposroles','usuarios.id_roles','=','tiposroles.id_roles')->
@@ -16,9 +18,10 @@ class UsuariosController extends Controller {
                 'tiposroles.nombre_r as roles')->get();
         return view('usuarios.index')->with('consulta',$consula);
     }
-    public function login() {
-        return view('login.login');
-    }
+
+public function login() {
+    return view('login.login');
+}
 
     public function create() {
         $consula = usuarios::orderBy('id_usuarios','DESC')->take(1)->get();
@@ -113,7 +116,7 @@ class UsuariosController extends Controller {
             /*return view('formulario.alerta')->with('proceso',"Activar Empleados")
                 ->with('mensaje',"El empleado ha sido activado correctamente")
                     ->with('error',1);*/
-            Session::flash('mensaje',"El empleado ha sido activado correctamente");
+            Session::flash('mensaje',"El usuario ha sido activado correctamente");
                 return redirect()->route('admin');
     }
     public function desactivausuario($id_usuarios){
@@ -122,7 +125,7 @@ class UsuariosController extends Controller {
         /* return view('formulario.alerta')->with('proceso',"Desactivar Empleados")
         ->with('mensaje',"El empleado ha sido desactivado correctamente")
         ->with('error',1);*/
-            Session::flash('mensaje',"El empleado ha sido desactivado correctamente");
+            Session::flash('mensaje',"El usuario ha sido desactivado correctamente");
                 return redirect()->route('admin');
     }
     public function borrarusuario($id_usuarios){
@@ -130,7 +133,7 @@ class UsuariosController extends Controller {
             return redirect()->route('admin');
     }
 
-
+//fin de uso de cada controlador
 
 //  FIN DEL CODIGO DE USO DE CRUD DE USUARIOS
 
@@ -163,7 +166,6 @@ class UsuariosController extends Controller {
                 $usuarios -> save();
                     return redirect()->route('login');
     }
-
 
     public function validar(Request $request){
         $this->validate($request,[
@@ -218,5 +220,15 @@ class UsuariosController extends Controller {
     public function usuario(){
         return view('roles.usuarios');
     }
+
+    public function cerrarsesion(){
+        session::forget('sessionusuario');
+        session::forget('sessionrol');
+        session::forget('sessionid');
+        session::flush();
+        Session::flash('mensaje',"La Sesion fue cerrada correctamente");
+            return redirect()->route('login');
+        }
+
 
 }
