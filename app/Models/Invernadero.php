@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Softdeletes;
 class Invernadero extends Model
 {
     use HasFactory,Softdeletes;
-    protected $table = 'invernadero';
+    protected $table = 'invernaderos';
         protected $primaryKey ='id_invernadero';
         protected $fillable = ['
             id_invernadero',
