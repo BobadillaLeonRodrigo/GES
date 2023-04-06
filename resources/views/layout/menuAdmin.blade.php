@@ -28,25 +28,11 @@
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-address-card" style="color: #32bd4e;"></i></div>
                                 Administrator
                             </a>
-                            <a class="nav-link" href="{{route('iot')}}">
-                                <div class="sb-nav-link-icon"><i class="fa-solid fa-cloud-arrow-up" style="color: #32bd4e;"></i></div>
-                                IoT
-                            </a>
-                            <a class="nav-link" href="{{route('usuario')}}">
-                                <div class="sb-nav-link-icon"><i class="fa-solid fa-user" style="color: #32bd4e;"></i></div>
-                                Usuario
-                            </a>
                             <div class="sb-sidenav-menu-heading text-center text-success">Interfaces</div>
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                                <div class="sb-nav-link-icon"><i class="fas fa-columns" style="color: #32bd4e;"></i></div>
-                                Datos
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            <a class="nav-link" href="{{route('admin')}}" aria-expanded="false" aria-controls="collapseLayouts">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-file" style="color: #32bd4e;"></i></div>
+                                Reportes
                             </a>
-                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="#">Reportes Graficas</a>
-                                </nav>
-                            </div>
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
