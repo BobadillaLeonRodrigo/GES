@@ -19,51 +19,50 @@
                             <div class="card bg-primary text-white mb-4">
                                 <div class="card-body text-center text-dark"><em><strong>Encargado</strong></em></div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link text-decoration-none" href="#">Visualizar CRUD</a>
+                                        <a class="small text-white stretched-link text-decoration-none" href="{{route('encargado.index')}}">Visualizar CRUD</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
                             </div>
-
                         <div class="col-xl-3 col-md-6">
                             <div class="card bg-warning text-white mb-4">
                                 <div class="card-body text-center text-dark"><strong><em>Invernadero</em></strong></div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link text-decoration-none" href="#">Visualizar CRUD</a>
+                                        <a class="small text-white stretched-link text-decoration-none" href="{{route('invernadero.index')}}">Visualizar CRUD</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
                             </div>
                         <div class="col-xl-3 col-md-6">
                             <div class="card bg-success text-white mb-4">
-                                <div class="card-body text-center text-dark"><strong><em>Asignacion</em></strong></div>
+                                <div class="card-body text-center text-dark"><strong><em>Sensores</em></strong></div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link text-decoration-none" href="#">Visualizar CRUD</a>
+                                        <a class="small text-white stretched-link text-decoration-none" href="{{route('sensor.index')}}">Visualizar CRUD</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
                             </div>
                         <div class="col-xl-3 col-md-6">
                             <div class="card bg-danger text-white mb-4">
+                                <div class="card-body text-center text-dark"><strong><em>Plantas</em></strong></div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <a class="small text-white stretched-link text-decoration-none" href="{{route('planta.index')}}">Visualizar CRUD</a>
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card bg-secondary text-white mb-4">
                                 <div class="card-body text-center text-dark"><strong><em>Mediciones</em></strong></div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link text-decoration-none" href="#">Visualizar CRUD</a>
+                                        <a class="small text-white stretched-link text-decoration-none" href="{{route('medicion.index')}}">Visualizar CRUD</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
                             </div>
                         <div class="col-xl-3 col-md-6">
-                            <div class="card bg-primary text-white mb-4">
-                                <div class="card-body text-center text-dark"><strong><em>Sensores</em></strong></div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link text-decoration-none" href="#">Visualizar CRUD</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                        <div class="col-xl-3 col-md-6">
-                            <div class="card bg-warning text-white mb-4">
-                                <div class="card-body text-center text-dark"><strong><em>Plantas</em></strong></div>
+                            <div class="card bg-dark text-white mb-4">
+                                <div class="card-body text-center text-white"><strong><em>Asignaciones</em></strong></div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
                                         <a class="small text-white stretched-link text-decoration-none" href="#">Visualizar CRUD</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
