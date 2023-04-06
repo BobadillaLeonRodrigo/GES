@@ -22,7 +22,7 @@
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-6">
-                            <div class="card shadow-lg border-dark border border-3 rounded-lg mt-5 rounded-3">
+                            <div class="card shadow-lg border-dark border border-3 rounded-lg mt-3 rounded-3">
                                 <div class="card-header">
                                     <h3 class="text-center font-weight-light my-4">Inicio de Sesión</h3>
                                 </div>

@@ -19,7 +19,7 @@
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-lg-7">
-                                <div class="card shadow-lg border-4 border-dark rounded-3 rounded-lg mt-3">
+                                <div class="card shadow-lg border border-3 border-dark rounded-3 rounded-lg mt-3">
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">Crea un Cuenta</h3></div>
                                     <div class="card-body">
                                         <form class="row" method="POST" action="{{route('registro_usuarios')}}">
