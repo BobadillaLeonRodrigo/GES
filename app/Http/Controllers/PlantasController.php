@@ -4,82 +4,123 @@ namespace App\Http\Controllers;
 
 use App\Models\Plantas;
 use Illuminate\Http\Request;
+use Session;
 
-class PlantasController extends Controller
-{
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        return view('admin_tablas.Plantas');
+class PlantasController extends Controller {
+    //Usar para el cada controlador
+    public function index() {
+        //Consula para desplegar los datos en el panelusuarios
+        $consula = plantas::withTrashed()->SELECT('plantas.id_plantas','plantas.nombre_p','plantas.descripcion','plantas.humedad_p',
+            'plantas.temperatura_p','plantas.foto_p','plantas.tipoplantas','plantas.fecha','plantas.deleted_at')->get();
+            return view('planta.index')->with('consulta',$consula);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function create() {
+        $consula = plantas::orderBy('id_plantas','DESC')->take(1)->get();
+            $cuantos = count($consula);
+                if ($cuantos === 0) {
+                    $idsiguiente = 1;
+                } else {
+                    $idsiguiente = $consula[0]->id_plantas + 1;
+                }
+                        /* $TiposRoles = TiposRoles::orderBy('nombre_r')->get(); */
+    //Asigna en que tipo de rol y Id del usuario se encuentra
+
+    //Parte de la llave foranea dependiendo de la tabla
+                        return view('planta.create')->with('idsiguiente',$idsiguiente);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+
+//  INICIO DE LA CREACION DE CRUDS DE USUARIO
+
+
+    //Crea los usuarios
+    public function store(Request $request) {
+        $this->validate($request,[
+            //Agrega las alertas si los campos no se han añadido
+            'nombre_p'=>'required',
+            'descripcion'=>'required',
+            'humedad_p'=>'required',
+            'temperatura_p'=>'required',
+            'foto_p'=>'required',
+            'tipoplantas'=>'required',
+            'fecha'=>'required',
+        ]);
+        //Crea nuevos usuarios en la tabla de Usuarios y su rol asignado
+        $planta = new plantas;
+            $planta -> id_plantas = $request->id_plantas;
+            $planta -> nombre_p = $request->nombre_p;
+            $planta -> descripcion = $request->descripcion;
+            $planta -> humedad_p = $request->humedad_p;
+            $planta -> temperatura_p = $request->temperatura_p;
+            $planta -> foto_p = $request->foto_p;
+            $planta -> tipoplantas = $request->tipoplantas;
+            $planta -> fecha = $request->fecha;
+                $planta -> save();
+                    return redirect()->route('planta.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Plantas  $plantas
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Plantas $plantas)
-    {
-        //
+    //Muestra la informacion por medio de un cady para la visualizacion del usuario (boton vista)
+
+    public function show($id_plantas) {
+        $planta = plantas::Select('plantas.id_plantas','plantas.nombre_p','plantas.descripcion','plantas.humendad_p',
+            'plantas.temperatura_p','plantas.foto_p','plantas.tipoplantas','plantas.fecha')->first();
+                return view('planta.show')->with('planta',$planta);
+    }
+    public function detalleP($id_plantas) {
+        $detalle = plantas::find($id_plantas);
+        return view("planta.show")->with(['detalle' => $detalle]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Plantas  $plantas
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Plantas $plantas)
-    {
-        //
+    //Modifica el usuario para la vista de edit con el boton Editar cambiar edit por Modificarusuario
+
+    public function Modificarplanta($id_plantas) {
+        //lamar a la tabla que hereda la llave foranea
+        $planta=plantas::withTrashed()->select('plantas.id_plantas','plantas.nombre_p','plantas.descripcion','plantas.humedad_p',
+            'plantas.temperatura_p','plantas.foto_p','plantas.tipoplantas','plantas.fecha')->where('id_plantas',$id_plantas)->get();
+                return view('planta.edit')->with('planta',$planta[0]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Plantas  $plantas
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Plantas $plantas)
-    {
-        //
+    //modifica para el redirecion al admin, cambiar update por modificar
+
+    public function modificar(Request $request) {
+        $this->validate($request,[
+            //Agrega las alertas si los campos no se han añadido
+            'nombre_p'=>'required',
+            'descripcion'=>'required',
+            'humedad_p'=>'required',
+            'temperatura_p'=>'required',
+            'foto_p'=>'required',
+            'tipoplantas'=>'required',
+            'fecha'=>'required',
+        ]);
+        $planta = plantas::all()->find($request->id_plantas);
+        $planta -> id_plantas = $request->id_plantas;
+        $planta -> nombre_p = $request->nombre_p;
+        $planta -> descripcion = $request->descripcion;
+        $planta -> humedad_p = $request->humedad_p;
+        $planta -> temperatura_p = $request->temperatura_p;
+        $planta -> foto_p = $request->foto_p;
+        $planta -> tipoplantas = $request->tipoplantas;
+        $planta -> fecha = $request->fecha;
+            $planta -> save();
+                return redirect()->route('planta.index');
+    }
+    public function activarplanta($id_plantas){
+        plantas::withTrashed()->where('id_plantas',$id_plantas)->restore();
+            Session::flash('mensaje',"La planta ha sido activado correctamente");
+                return redirect()->route('planta.index');
+    }
+    public function desactivaplanta($id_plantas){
+        $planta=plantas::find($id_plantas);
+            $planta->delete();
+            Session::flash('mensaje',"La planta ha sido desactivado correctamente");
+                return redirect()->route('planta.index');
+    }
+    public function borrarplanta($id_plantas){
+        $planta=plantas::withTrashed()->find($id_plantas)->forceDelete();
+            return redirect()->route('planta.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Plantas  $plantas
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Plantas $plantas)
-    {
-        //
-    }
+//fin de uso de cada controlador
 }
