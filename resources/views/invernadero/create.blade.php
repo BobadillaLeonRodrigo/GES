@@ -100,7 +100,7 @@
                                                 <label for="inputEmail">Tipo de Encargado</label>
                                             </div>
                                             <div class="mt-2">
-                                                    <button class="btn btn-success text-center border border-dark" type="submit"><em>Crear Encargado</em></button>
+                                                    <button class="btn btn-success text-center border border-dark" type="submit"><em>Crear Invernadero</em></button>
                                             </div>
                                         </form>
                                     </div>

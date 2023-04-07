@@ -6,7 +6,7 @@
                         <div class="card-header">
                             <i class="fas fa-table me-1"></i>
                                 Todos los Invernaderos
-                                <a class="btn btn-info border border-dark border-3" href="{{ route('invernadero.create') }}">Crear Encargado</a>
+                                <a class="btn btn-info border border-dark border-3" href="{{ route('invernadero.create') }}">Crear Invernadero</a>
                         </div>
                             <div class="card-body">
                                 <table id="datatablesSimple" class="table table-hover border border-2 border-dark rounded-2">
