@@ -17,13 +17,13 @@
                 <h6 class="m-0 font-weight-bold text-success text-center">Informacion del Encargado</h6>
         </div>
         <div class="card-body">
-                <h5 class="card-title">ID del Usuario: {{ $detalle->id_encargado }}</h5>
-                <h5 class="card-text">Nombre: {{ $detalle->nombre_en }}</h5>
-                <h5 class="card-title">Apellido Paterno: {{ $detalle->app_en }}</h5>
-                <h5 class="card-text">Apellido Materno: {{ $detalle->apm_en }}</h5>
-                <h5 class="card-title">Entrada: {{ $detalle->entrada }}</h5>
-                <h5 class="card-title">Salida: {{ $detalle->salida }}</h5>
-                <h5 class="card-title">Dias: {{ $detalle->dias }}</h5>
+                <h5 class="card-title">ID del Usuario: {{ $encargado->id_encargado }}</h5>
+                <h5 class="card-text">Nombre: {{ $encargado->nombre_en }}</h5>
+                <h5 class="card-title">Apellido Paterno: {{ $encargado->app_en }}</h5>
+                <h5 class="card-text">Apellido Materno: {{ $encargado->apm_en }}</h5>
+                <h5 class="card-title">Entrada: {{ $encargado->entrada }}</h5>
+                <h5 class="card-title">Salida: {{ $encargado->salida }}</h5>
+                <h5 class="card-title">Dias: {{ $encargado->dias }}</h5>
                 <a class="btn btn-outline-success" href="/encargado">Regresar</a>
         </div>
 </div>
