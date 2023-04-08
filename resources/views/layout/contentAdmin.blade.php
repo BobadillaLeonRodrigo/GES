@@ -64,7 +64,7 @@
                             <div class="card bg-dark text-white mb-4">
                                 <div class="card-body text-center text-white"><strong><em>Asignaciones</em></strong></div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link text-decoration-none" href="#">Visualizar CRUD</a>
+                                        <a class="small text-white stretched-link text-decoration-none" href="{{route('asignacion.index')}}">Visualizar CRUD</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>

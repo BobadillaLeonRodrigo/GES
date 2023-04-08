@@ -73,7 +73,7 @@ class PlantasController extends Controller {
     //Muestra la informacion por medio de un cady para la visualizacion del usuario (boton vista)
 
     public function show($id_plantas) {
-        $planta = plantas::Select('plantas.id_plantas','plantas.nombre_p','plantas.descripcion','plantas.humendad_p',
+        $planta = plantas::Select('plantas.id_plantas','plantas.nombre_p','plantas.descripcion','plantas.humedad_p',
             'plantas.temperatura_p','plantas.foto_p','plantas.tipoplantas','plantas.fecha')->first();
                 return view('planta.show')->with('planta',$planta);
     }

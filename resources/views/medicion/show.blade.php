@@ -17,12 +17,13 @@
                 <h6 class="m-0 font-weight-bold text-success text-center">Informacion de Mediciones</h6>
         </div>
         <div class="card-body">
-                <h5 class="card-title">ID de Medicion: {{ $detalle->id_mediciones }}</h5>
-                <h5 class="card-text">Humedad de Medicion: {{ $detalle->humedad_m }}</h5>
-                <h5 class="card-title">Temperatura de Medicion: {{ $detalle->temperatura_m }}</h5>
-                <h5 class="card-text">Medicion: {{ $detalle->medicion }}</h5>
-                <h5 class="card-text">Fecha Medicion: {{ $detalle->fecha_m }}</h5>
-                <h5 class="card-text">Hora Medicion: {{ $detalle->hora_m }}</h5>
+                <h5 class="card-title">ID de Medicion: {{ $medicion->id_mediciones }}</h5>
+                <h5 class="card-text">Humedad de Medicion: {{ $medicion->humedad_m }}</h5>
+                <h5 class="card-title">Temperatura de Medicion: {{ $medicion->temperatura_m }}</h5>
+                <h5 class="card-text">Medicion: {{ $medicion->medicion }}</h5>
+                <h5 class="card-text">Fecha Medicion: {{ $medicion->fecha_m }}</h5>
+                <h5 class="card-text">Hora Medicion: {{ $medicion->hora_m }}</h5>
+                <h5 class="card-text">ID de Sensor: {{ $medicion->id_sensor }}</h5>
                 <a class="btn btn-outline-success" href="/medicion">Regresar</a>
         </div>
 </div>

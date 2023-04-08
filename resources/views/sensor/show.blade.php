@@ -17,10 +17,10 @@
                 <h6 class="m-0 font-weight-bold text-success text-center">Informacion del Sensor</h6>
         </div>
         <div class="card-body">
-                <h5 class="card-title">ID de Sensor: {{ $detalle->id_sensor }}</h5>
-                <h5 class="card-text">Tipo de Sensor: {{ $detalle->tiposensor }}</h5>
-                <h5 class="card-text">Descripcion: {{ $detalle->descripcion }}</h5>
-                <h5 class="card-title">Estatus: {{ $detalle->estatus }}</h5>
+                <h5 class="card-title">ID de Sensor: {{ $sensor->id_sensor }}</h5>
+                <h5 class="card-text">Tipo de Sensor: {{ $sensor->tiposensor }}</h5>
+                <h5 class="card-text">Descripcion: {{ $sensor->descripcion }}</h5>
+                <h5 class="card-title">Estatus: {{ $sensor->estatus }}</h5>
                 <a class="btn btn-outline-success" href="/sensor">Regresar</a>
         </div>
 </div>

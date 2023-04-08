@@ -17,14 +17,14 @@
                 <h6 class="m-0 font-weight-bold text-success text-center">Informacion de Planta</h6>
         </div>
         <div class="card-body">
-                <h5 class="card-title">ID de Planta: {{ $detalle->id_plantas }}</h5>
-                <h5 class="card-text">Nombre de Planta: {{ $detalle->nombre_p }}</h5>
-                <h5 class="card-text">Descripcion: {{ $detalle->descripcion }}</h5>
-                <h5 class="card-title">Humedad de Planta: {{ $detalle->huemdad_p }}</h5>
-                <h5 class="card-title">Temperatura de Planta: {{ $detalle->temperatura_p }}</h5>
-                <h5 class="card-title">Fotografia: {{ $detalle->foto_p }}</h5>
-                <h5 class="card-title">Tipo de Planta: {{ $detalle->tipoplantas }}</h5>
-                <h5 class="card-title">Fecha de Planta: {{ $detalle->fecha_p }}</h5>
+                <h5 class="card-title">ID de Planta: {{ $planta->id_plantas }}</h5>
+                <h5 class="card-text">Nombre de Planta: {{ $planta->nombre_p }}</h5>
+                <h5 class="card-text">Descripcion: {{ $planta->descripcion }}</h5>
+                <h5 class="card-title">Humedad de Planta: {{ $planta->humedad_p }}</h5>
+                <h5 class="card-title">Temperatura de Planta: {{ $planta->temperatura_p }}</h5>
+                <h5 class="card-title">Fotografia: {{ $planta->foto_p }}</h5>
+                <h5 class="card-title">Tipo de Planta: {{ $planta->tipoplantas }}</h5>
+                <h5 class="card-title">Fecha de Planta: {{ $planta->fecha_p }}</h5>
                 <a class="btn btn-outline-success" href="/planta">Regresar</a>
         </div>
 </div>
