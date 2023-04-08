@@ -42,18 +42,28 @@ class PlantasController extends Controller {
             'descripcion'=>'required',
             'humedad_p'=>'required',
             'temperatura_p'=>'required',
-            'foto_p'=>'required',
+            'foto_p'=>'image|mimes:gif,jpg,png,jpeg',
             'tipoplantas'=>'required',
             'fecha'=>'required',
         ]);
         //Crea nuevos usuarios en la tabla de Usuarios y su rol asignado
+
+        $file= $request->file('foto_p');
+            if($file<>""){
+                $img =$file->getClientOriginalName();
+                    $img2=$request ->id_plantas.$img;
+                \Storage::disk('local')->put($img2, \File::get($file));
+            }else{
+                $img2="Perfil.png";
+            };
+
         $planta = new plantas;
             $planta -> id_plantas = $request->id_plantas;
             $planta -> nombre_p = $request->nombre_p;
             $planta -> descripcion = $request->descripcion;
             $planta -> humedad_p = $request->humedad_p;
             $planta -> temperatura_p = $request->temperatura_p;
-            $planta -> foto_p = $request->foto_p;
+            $planta -> foto_p = $img2;
             $planta -> tipoplantas = $request->tipoplantas;
             $planta -> fecha = $request->fecha;
                 $planta -> save();
@@ -84,13 +94,19 @@ class PlantasController extends Controller {
     //modifica para el redirecion al admin, cambiar update por modificar
 
     public function modificar(Request $request) {
+        $file= $request->file('foto_p');
+        if($file<>""){
+            $img =$file->getClientOriginalName();
+            $img2=$request ->id_plantas.$img;
+                \Storage::disk('local')->put($img2, \File::get($file));
+        }
         $this->validate($request,[
             //Agrega las alertas si los campos no se han añadido
             'nombre_p'=>'required',
             'descripcion'=>'required',
             'humedad_p'=>'required',
             'temperatura_p'=>'required',
-            'foto_p'=>'required',
+            'foto_p'=>'image|mimes:gif,jpg,png,jpeg',
             'tipoplantas'=>'required',
             'fecha'=>'required',
         ]);
@@ -100,7 +116,9 @@ class PlantasController extends Controller {
         $planta -> descripcion = $request->descripcion;
         $planta -> humedad_p = $request->humedad_p;
         $planta -> temperatura_p = $request->temperatura_p;
-        $planta -> foto_p = $request->foto_p;
+        if($file<>""){
+            $planta->foto_p = $img2;
+            }
         $planta -> tipoplantas = $request->tipoplantas;
         $planta -> fecha = $request->fecha;
             $planta -> save();

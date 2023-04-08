@@ -26,7 +26,7 @@
                         <h2 class="m-0 font-weight-bold text-success text-center">Editar Plantas</h2>
                     </div>
                     <div class="card-body">
-                        <form action="{{route('modificar')}}" method="POST" >
+                        <form action="{{route('modificar')}}" enctype='multipart/form-data' method="POST" >
                             {{csrf_field()}}
                             <label>ID de Planta</label>
                                 <input class="form-control" type="text" name="id_plantas" id="id_plantas"  value="{{$planta->id_plantas}}" readonly='readonly' required >

@@ -22,7 +22,7 @@
                                 <div class="card shadow-lg border-4 border-dark rounded-3 rounded-lg mt-5">
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">Registro de Plantas</h3></div>
                                     <div class="card-body">
-                                        <form class="row g-1" method="POST" action="{{route('planta.store')}}">
+                                        <form class="row g-1" enctype='multipart/form-data' method="POST" action="{{route('planta.store')}}">
                                         {{csrf_field()}}
                                             <div class="row mb-4">
                                                 <div class="col-md-3">
@@ -104,7 +104,7 @@
                                                             class="form-control"
                                                             id="foto_p"
                                                             name="foto_p"
-                                                            type="text"
+                                                            type="file"
                                                             placeholder="Imagen de Planta"
                                                         />
                                                         @if($errors ->first('foto_p'))
