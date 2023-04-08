@@ -60,7 +60,7 @@ class InvernaderoController extends Controller {
     //Muestra la informacion por medio de un cady para la visualizacion del usuario (boton vista)
 
     public function show($id_invenadero) {
-        $invernadero = invernadero::Select('invernaderos.id_invernadero','invernaderos.nombre_i','invernaderos.lote')->first();
+        $invernadero = invernadero::Select('invernaderos.id_invernadero','invernaderos.nombre_i','invernaderos.lote','invernaderos.descripcion')->first();
                 return view('invernadero.show')->with('invernadero',$invernadero);
     }
     public function detalleI($id_invernadero) {

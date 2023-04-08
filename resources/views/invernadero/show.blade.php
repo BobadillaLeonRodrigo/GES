@@ -17,10 +17,10 @@
                 <h6 class="m-0 font-weight-bold text-success text-center">Informacion de Invernadero</h6>
         </div>
         <div class="card-body">
-                <h5 class="card-title">ID de Invernadero: {{ $detalle->id_invernadero }}</h5>
-                <h5 class="card-text">Nombre del Invernadero: {{ $detalle->nombre_i }}</h5>
-                <h5 class="card-title">Numero de Lote: {{ $detalle->lote }}</h5>
-                <h5 class="card-text">Descripcion: {{ $detalle->descripcion }}</h5>
+                <h5 class="card-title">ID de Invernadero: {{ $invernadero->id_invernadero }}</h5>
+                <h5 class="card-text">Nombre del Invernadero: {{ $invernadero->nombre_i }}</h5>
+                <h5 class="card-title">Numero de Lote: {{ $invernadero->lote }}</h5>
+                <h5 class="card-text">Descripcion: {{ $invernadero->descripcion }}</h5>
                 <a class="btn btn-outline-success" href="/invernadero">Regresar</a>
         </div>
 </div>
