@@ -230,5 +230,18 @@ public function login() {
             return redirect()->route('login');
         }
 
-
+        public function graficos(){
+                //PARA TOMA DE DATOS DE HUMEDAD
+            $graficoH=\DB::Select("SELECT humedad_m FROM mediciones");
+            $horas=\DB::Select("SELECT hora_m FROM mediciones ");
+                //PARA TOMA DE DATOS DE TEMPERATURA
+            $graficoT=\DB::Select("SELECT temperatura_m FROM mediciones");
+            $hora=\DB::Select("SELECT hora_m FROM mediciones ");
+                //RETORNA LA VISTA CON LOS DATOS
+            return view ('reportes.grafico')
+                ->with(['graficoH' => $graficoH])
+                    ->with(['horas' => $horas])
+                        ->with(['graficoT' => $graficoT])
+                            ->with(['hora' => $hora]);
+        }
 }

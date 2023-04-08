@@ -29,7 +29,7 @@
                                 Administrator
                             </a>
                             <div class="sb-sidenav-menu-heading text-center text-success">Interfaces</div>
-                            <a class="nav-link" href="{{route('admin')}}" aria-expanded="false" aria-controls="collapseLayouts">
+                            <a class="nav-link" href="{{route('graficos')}}" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-file" style="color: #32bd4e;"></i></div>
                                 Reportes
                             </a>

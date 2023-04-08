@@ -107,7 +107,5 @@ Route::get('activarmedicion/{id_mediciones}',[MedicionesController::class,'activ
 Route::get('borrarmedicion/{id_mediciones}',[MedicionesController::class,'borrarmedicion'])->name('borrarmedicion')->middleware('admin');
 Route::name('detalleM')->get('detalleM/{id_mediciones}',[MedicionesController::class,'detalleM'])->middleware('admin');
 
-
-
-
-
+//Graficas
+Route::name('graficos')->get('graficos', [UsuariosController::class, 'graficos']);
