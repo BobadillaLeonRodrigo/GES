@@ -4,7 +4,7 @@
 @include('layout.contentAdmin')
 <!--    **GRAFICA DE HUMEDAD**    -->
 <script>
-        new Chart(document.getElementById("graficahumedad"), {
+        new Chart(document.getElementById("graficaH"), {
             type: 'line',
             data: {
                 labels: [
@@ -14,7 +14,6 @@
                 ],
                 datasets: [{
                     label: "Humedad",
-                    fill: false,
                     backgroundColor: [
                         @foreach($horas as $horas)
                         "#" + Math.floor(Math.random() * 16777215).toString(16),
@@ -54,7 +53,7 @@
                 <em><strong>Grafica de Humedad</strong></em>
             </div>
                 <div class="card-body">
-                    <canvas id="graficahumedad" width="90%" height="50"></canvas>
+                    <canvas id="graficaH" width="90%" height="50"></canvas>
                 </div>
             </div>
         </div>
@@ -65,7 +64,7 @@
                         <em><strong>Grafica de Temperatura</strong></em>
                 </div>
             <div class="card-body">
-                <canvas id="graficatemperatura" width="100%" height="50"></canvas>
+                <canvas id="graficaT" width="100%" height="50"></canvas>
             </div>
         </div>
     </div>
@@ -73,8 +72,8 @@
 
 <!--    **GRAFICA DE TEMPERATURA**    -->
 <script>
-    new Chart(document.getElementById("graficatemperatura"), {
-        type: 'line',
+    new Chart(document.getElementById("graficaT"), {
+        type: 'bar',
             data: {
                 labels: [
                     @foreach($hora as $hora)
@@ -83,9 +82,7 @@
                 ],
                 datasets: [{
                     label: "Temperatura",
-                    fill: false,
-                    borderColor: '#32bd4e',
-                    tension: 0.3,
+                    //fill: false,
                     backgroundColor: [
                         @foreach($hora as $hora)
                         "#" + Math.floor(Math.random() * 16777215).toString(16),
