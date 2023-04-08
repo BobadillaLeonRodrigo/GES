@@ -106,3 +106,8 @@ Route::get('desactivamedicion/{id_mediciones}',[MedicionesController::class,'des
 Route::get('activarmedicion/{id_mediciones}',[MedicionesController::class,'activarmedicion'])->name('activarmedicion')->middleware('admin');
 Route::get('borrarmedicion/{id_mediciones}',[MedicionesController::class,'borrarmedicion'])->name('borrarmedicion')->middleware('admin');
 Route::name('detalleM')->get('detalleM/{id_mediciones}',[MedicionesController::class,'detalleM'])->middleware('admin');
+
+
+
+
+
