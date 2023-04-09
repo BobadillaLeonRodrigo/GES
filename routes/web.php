@@ -9,6 +9,7 @@ use App\Http\Controllers\MedicionesController;
 use App\Http\Controllers\InvernaderoController;
 use App\Http\Controllers\EncargadoController;
 use App\Http\Controllers\AsignacionController;
+use App\Http\Controllers\GraficasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -108,4 +109,4 @@ Route::get('borrarmedicion/{id_mediciones}',[MedicionesController::class,'borrar
 Route::name('detalleM')->get('detalleM/{id_mediciones}',[MedicionesController::class,'detalleM'])->middleware('admin');
 
 //Graficas
-Route::name('graficos')->get('graficos', [UsuariosController::class, 'graficos']);
+Route::name('graficos')->get('graficos', [GraficasController::class, 'graficos']);

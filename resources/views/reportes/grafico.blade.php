@@ -5,7 +5,7 @@
 <!--    **GRAFICA DE HUMEDAD**    -->
 <script>
         new Chart(document.getElementById("graficaH"), {
-            type: 'line',
+            type: 'bar',
             data: {
                 labels: [
                     @foreach($horas as $horas)
@@ -53,7 +53,7 @@
                 <em><strong>Grafica de Humedad</strong></em>
             </div>
                 <div class="card-body">
-                    <canvas id="graficaH" width="90%" height="50"></canvas>
+                    <canvas id="graficaH" width="100%" height="50"></canvas>
                 </div>
             </div>
         </div>

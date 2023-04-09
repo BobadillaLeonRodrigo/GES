@@ -72,8 +72,8 @@ class EncargadoController extends Controller {
                 return view('encargado.show')->with('encargado',$encargado);
     }
     public function detalleE($id_encargado) {
-        $detalle = encargado::find($id_encargado);
-        return view("encargado.show")->with(['detalle' => $detalle]);
+        $detalles = encargado::find($id_encargado);
+        return view("encargado.show")->with(['detalle' => $detalles]);
     }
 
     //Modifica el usuario para la vista de edit con el boton Editar cambiar edit por Modificarusuario
