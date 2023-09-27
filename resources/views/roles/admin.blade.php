@@ -2,13 +2,30 @@
 @include('layout.headerpanel')
 @include('layout.menuAdmin')
 @include('layout.contentAdmin')
+<script src="{{ asset('js/jquery-3.3.1.js') }}"></script>
+<script>
+    $(document).ready(function(){
+        $("#busca").keyup(function(){
+            $busca = $(this).val();
+            $contar = $busca.length;
+        //console.log($contar);
+            if ($contar >= 3) {
+                $("#resultado").load('js_buscar?busca=' + $busca);
+            //console.log($busca);
+            } else {
+                $("#resultado").load('js_defecto');
+            }
+        });
+    });
+</script>
 <div class="card mb-4">
     <div class="card-header">
         <i class="fas fa-table me-1"></i>
             Todos los Usuarios
                 <a class="btn btn-info border border-dark border-3" href="{{ route('usuarios.create') }}">Crear Usuarios</a>
+                    <input class="form-control mt-2" name="busca" id="busca" type="text" placeholder="Buscar">
     </div>
-        <div class="card-body">
+        <div class="card-body" id="resultado">
             <table id="datatablesSimple" class="table table-hover border border-2 border-dark rounded-2">
                 <thead class="text-center table-dark text-success">
                     <tr>
