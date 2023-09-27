@@ -64,13 +64,8 @@ class MedicionesController extends Controller {
     //Muestra la informacion por medio de un cady para la visualizacion del usuario (boton vista)
 
     public function show($id_mediciones) {
-        $medicion = mediciones::Select('mediciones.id_mediciones','mediciones.humedad_m',
-        'mediciones.temperatura_m','mediciones.medicion','mediciones.fecha_m','mediciones.hora_m')->first();
-            return view('medicion.show')->with('medicion',$medicion);
-    }
-    public function detalleM($id_mediciones) {
-        $detalle = mediciones::find($id_mediciones);
-        return view("medicion.show")->with(['detalle' => $detalle]);
+        $medicion = mediciones::find($id_mediciones);
+            return view('medicion.show', compact('medicion'));
     }
 
     //Modifica el usuario para la vista de edit con el boton Editar cambiar edit por Modificarusuario

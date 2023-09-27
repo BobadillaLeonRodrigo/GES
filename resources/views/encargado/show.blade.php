@@ -17,7 +17,7 @@
                 <h6 class="m-0 font-weight-bold text-success text-center">Informacion del Encargado</h6>
         </div>
         <div class="card-body">
-                <h5 class="card-title">ID del Usuario: {{ $encargado->id_encargado }}</h5>
+                <h5 class="card-title">ID del encargado: {{ $encargado->id_encargado }}</h5>
                 <h5 class="card-text">Nombre: {{ $encargado->nombre_en }}</h5>
                 <h5 class="card-title">Apellido Paterno: {{ $encargado->app_en }}</h5>
                 <h5 class="card-text">Apellido Materno: {{ $encargado->apm_en }}</h5>

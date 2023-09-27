@@ -53,14 +53,9 @@ class SensoresController extends Controller {
 
     //Muestra la informacion por medio de un cady para la visualizacion del usuario (boton vista)
 
-    public function show($id_sensor) {
-        $sensor = sensores::Select('sensores.id_sensor','sensores.tiposensor',
-            'sensores.descripcion','sensores.estatus')->first();
-                return view('sensor.show')->with('sensor',$sensor);
-    }
-    public function detalleS($id_sensor) {
-        $detalle = sensores::find($id_sensor);
-        return view("sensor.show")->with(['detalle' => $detalle]);
+    public function show($id_invernadero) {
+        $sensor = sensores::find($id_invernadero);
+            return view('sensor.show', compact('sensor'));
     }
 
     //Modifica el usuario para la vista de edit con el boton Editar cambiar edit por Modificarusuario

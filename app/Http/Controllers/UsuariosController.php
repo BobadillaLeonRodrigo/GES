@@ -71,6 +71,7 @@ public function login() {
             'usuarios.email')->first();
                 return view('usuarios.show')->with('usuarios',$usuarios);
     }
+
     public function detalle($id_usuarios) {
         $usuarios = usuarios::find($id_usuarios);
         return view("usuarios.show")->with(['detalle' => $usuarios]);

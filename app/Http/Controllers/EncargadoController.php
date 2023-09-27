@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Usuarios;
+use App\Models\Encargado;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use App\Models\Encargado;
 use Session;
 
 class EncargadoController extends Controller {
@@ -67,13 +67,8 @@ class EncargadoController extends Controller {
     //Muestra la informacion por medio de un cady para la visualizacion del usuario (boton vista)
 
     public function show($id_encargado) {
-        $encargado = encargado::Select('encargados.id_encargado','encargados.nombre_en','encargados.app_en','encargados.apm_en',
-            'encargados.entrada','encargados.salida','encargados.dias')->first();
-                return view('encargado.show')->with('encargado',$encargado);
-    }
-    public function detalleE($id_encargado) {
-        $detalles = encargado::find($id_encargado);
-        return view("encargado.show")->with(['detalle' => $detalles]);
+        $encargado = Encargado::find($id_encargado);
+            return view('encargado.show', compact('encargado'));
     }
 
     //Modifica el usuario para la vista de edit con el boton Editar cambiar edit por Modificarusuario

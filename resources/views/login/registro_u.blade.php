@@ -71,18 +71,20 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="form-floating mb-3">
-                                                <input
-                                                    class="form-control"
-                                                    id="email"
-                                                    name="email"
-                                                    type="email"
-                                                    placeholder="name@example.com"
-                                                />
-                                                @if($errors ->first('email'))
-                                                    <p class='text-danger'>{{$errors->first('email')}} </p>
-                                                @endif
-                                                <label for="inputEmail">Correo Electronico</label>
+                                            <div class="row mb-3">
+                                                <div class="form-floating mb-3">
+                                                    <input
+                                                        class="form-control"
+                                                        id="email"
+                                                        name="email"
+                                                        type="email"
+                                                        placeholder="name@example.com"
+                                                    />
+                                                    @if($errors ->first('email'))
+                                                        <p class='text-danger'>{{$errors->first('email')}} </p>
+                                                    @endif
+                                                    <label for="inputEmail">Correo Electronico</label>
+                                                </div>
                                             </div>
                                             <div class="row mb-3">
                                                     <div class="form-floating mb-3">

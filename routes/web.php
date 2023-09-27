@@ -10,6 +10,7 @@ use App\Http\Controllers\InvernaderoController;
 use App\Http\Controllers\EncargadoController;
 use App\Http\Controllers\AsignacionController;
 use App\Http\Controllers\GraficasController;
+use App\Http\Controllers\ReporteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,17 +51,17 @@ Route::get('iot',[UsuariosController::class,'iot'])->name('iot')->middleware('io
 Route::get('usuario',[UsuariosController::class,'usuario'])->name('usuario')->middleware('usuario');
 
 //Formulario para crea CRUD de puros usuarios globales
-Route::resource('usuarios',UsuariosController::class);
 Route::get('registro_u',[UsuariosController::class,'registro_u'])->name('registro_u');
 Route::POST('registro_usuarios',[UsuariosController::class,'registro_usuarios'])->name('registro_usuarios');
 Route::get('cerrarsesion',[UsuariosController::class,'cerrarsesion'])->name('cerrarsesion');
 
 //Rutar para modificar diversor usuarios en el panel administrativo USANDO UNICAMENTE EL PANEL ADMINISTRATIVO
-Route::get('Modificarusuario/{id_usuarios}',[UsuariosController::class,'Modificarusuario'])->name('Modificarusuario')->middleware('admin');
-Route::POST('modificar',[UsuariosController::class,'modificar'])->name('modificar');
-Route::get('desactivausuario/{id_usuarios}',[UsuariosController::class,'desactivausuario'])->name('desactivausuario')->middleware('admin');
-Route::get('activarusuario/{id_usuarios}',[UsuariosController::class,'activarusuario'])->name('activarusuario')->middleware('admin');
-Route::get('borrarusuario/{id_usuarios}',[UsuariosController::class,'borrarusuario'])->name('borrarusuario')->middleware('admin');
+Route::resource('usuarios',UsuariosController::class)->middleware('admin');
+Route::get('Modificarusuario/{id_usuarios}',[EncargadoController::class,'Modificarusuario'])->name('Modificarusuario')->middleware('admin');
+Route::POST('modificar',[EncargadoController::class,'modificar'])->name('modificar')->middleware('admin');
+Route::get('desactivausuario/{id_usuarios}',[EncargadoController::class,'desactivausuario'])->name('desactivausuario')->middleware('admin');
+Route::get('activarusuario/{id_usuarios}',[EncargadoController::class,'activarusuario'])->name('activarusuario')->middleware('admin');
+Route::get('borrarusuario/{id_usuarios}',[EncargadoController::class,'borrarusuario'])->name('borrarusuario')->middleware('admin');
 Route::name('detalle')->get('detalle/{id_usuarios}',[UsuariosController::class,'detalle'])->middleware('admin');
 
 //Rutras de Engargado creados apartir del panel del administrador y redireccionando al mismo panel
@@ -70,7 +71,6 @@ Route::POST('modificar',[EncargadoController::class,'modificar'])->name('modific
 Route::get('desactivaencargado/{id_encargado}',[EncargadoController::class,'desactivaencargado'])->name('desactivaencargado')->middleware('admin');
 Route::get('activarencargado/{id_encargado}',[EncargadoController::class,'activarencargado'])->name('activarencargado')->middleware('admin');
 Route::get('borrarencargado/{id_encargado}',[EncargadoController::class,'borrarencargado'])->name('borrarencargado')->middleware('admin');
-Route::name('detalleE')->get('detalleE/{id_encargado}',[EncargadoController::class,'detalleE'])->middleware('admin');
 
 //Rutras de Invernadero creados apartir del panel del administrador y redireccionando al mismo panel
 Route::resource('invernadero',InvernaderoController::class);
@@ -79,7 +79,6 @@ Route::POST('modificar',[InvernaderoController::class,'modificar'])->name('modif
 Route::get('desactivainvernadero/{id_invernadero}',[InvernaderoController::class,'desactivainvernadero'])->name('desactivainvernadero')->middleware('admin');
 Route::get('activarinvernadero/{id_invernadero}',[InvernaderoController::class,'activarinvernadero'])->name('activarinvernadero')->middleware('admin');
 Route::get('borrarinvernadero/{id_invernadero}',[InvernaderoController::class,'borrarinvernadero'])->name('borrarinvernadero')->middleware('admin');
-Route::name('detalleI')->get('detalleI/{id_invernadero}',[InvernaderoController::class,'detalleI'])->middleware('admin');
 
 //Rutras de Sensores creados apartir del panel del administrador y redireccionando al mismo panel
 Route::resource('sensor',SensoresController::class);
@@ -88,7 +87,6 @@ Route::POST('modificar',[SensoresController::class,'modificar'])->name('modifica
 Route::get('desactivasensor/{id_sensor}',[SensoresController::class,'desactivasensor'])->name('desactivasensor')->middleware('admin');
 Route::get('activarsensor/{id_sensor}',[SensoresController::class,'activarsensor'])->name('activarsensor')->middleware('admin');
 Route::get('borrarsensor/{id_sensor}',[SensoresController::class,'borrarsensor'])->name('borrarsensor')->middleware('admin');
-Route::name('detalleS')->get('detalleS/{id_sensor}',[SensoresController::class,'detalleS'])->middleware('admin');
 
 //Rutras de Plantas creados apartir del panel del administrador y redireccionando al mismo panel
 Route::resource('planta',PlantasController::class);
@@ -97,7 +95,6 @@ Route::POST('modificar',[PlantasController::class,'modificar'])->name('modificar
 Route::get('desactivaplanta/{id_plantas}',[PlantasController::class,'desactivaplanta'])->name('desactivaplanta')->middleware('admin');
 Route::get('activarplanta/{id_plantas}',[PlantasController::class,'activarplanta'])->name('activarplanta')->middleware('admin');
 Route::get('borrarplanta/{id_plantas}',[PlantasController::class,'borrarplanta'])->name('borrarplanta')->middleware('admin');
-Route::name('detalleP')->get('detalleP/{id_plantas}',[PlantasController::class,'detalleP'])->middleware('admin');
 
 //Rutras de Mediciones creados apartir del panel del administrador y redireccionando al mismo panel
 Route::resource('medicion',MedicionesController::class);
@@ -106,7 +103,13 @@ Route::POST('modificar',[MedicionesController::class,'modificar'])->name('modifi
 Route::get('desactivamedicion/{id_mediciones}',[MedicionesController::class,'desactivamedicion'])->name('desactivamedicion')->middleware('admin');
 Route::get('activarmedicion/{id_mediciones}',[MedicionesController::class,'activarmedicion'])->name('activarmedicion')->middleware('admin');
 Route::get('borrarmedicion/{id_mediciones}',[MedicionesController::class,'borrarmedicion'])->name('borrarmedicion')->middleware('admin');
-Route::name('detalleM')->get('detalleM/{id_mediciones}',[MedicionesController::class,'detalleM'])->middleware('admin');
 
+//Reportes de Excel agregar a la vista de menuAdmin
+Route::get('/reporte/export', 'App\Http\Controllers\ReporteController@export')->name('reporte.export');
+
+//Fitrado de datos
+Route::name('form02')->get('form02',[UsuariosController::class, 'form02']);
+Route::name('js_buscar')->get('js_buscar',[UsuariosController::class, 'js_buscar']);
+Route::name('js_defecto')->get('js_defecto',[UsuariosController::class, 'js_defecto']);
 //Graficas
 Route::name('graficos')->get('graficos', [GraficasController::class, 'graficos']);
